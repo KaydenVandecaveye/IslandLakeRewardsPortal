@@ -17,6 +17,7 @@ export const Auth = () => {
 
     return (
         <div>
+            <div>Branch made</div>
             <input 
                 placeholder="Email.."
                 onChange={(e) => setEmail(e.target.value)}
