@@ -1,14 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import { Auth } from './components/Auth';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <div>
-      <h2>Island Lake Rewards Portal</h2>
-      <Auth />
-      
-    </div>
+    <Router>
+      <Routes>
+       <Route path="/" element={<Login />}/>
+       <Route path="/dashboard" element={<Dashboard />}/>
+      </Routes>
+    </Router>
   );
 }
 
