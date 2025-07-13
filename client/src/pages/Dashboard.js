@@ -1,4 +1,4 @@
-import { db } from "../../server/config/firebase";
+import { db } from "../config/firebase";
 import { useState } from "react";
 import { collection, query, where, getDocs, updateDoc, increment } from "firebase/firestore";
 
@@ -30,6 +30,7 @@ function Dashboard() {
             console.error("Error incrementing points:", error);
           }
     }
+    
     return (
         <div>
             <h2>Dashboard</h2>

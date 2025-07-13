@@ -1,4 +1,4 @@
-import { auth } from "../../server/config/firebase";
+import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from 'react';
 
