@@ -30,6 +30,22 @@ function Dashboard() {
             console.error("Error incrementing points:", error);
           }
     }
+
+    const handleSubmit = async () => {
+        if (amountSpent === 0 || userNum === "") {
+            alert("Invalid submission, please fill all fields.");
+        }
+        fetch('http://localhost:3001/user/addPoints', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userNumber: userNum,
+                moneySpent: amountSpent
+            })
+        })
+    }
     
     return (
         <div>
@@ -43,7 +59,7 @@ function Dashboard() {
                 onChange={(e) => setAmountSpent(e.target.value)}
             />
             <button
-                onClick={() => incPoints(userNum)}
+                onClick={() => handleSubmit()}
             >
                 Submit
             </button>
