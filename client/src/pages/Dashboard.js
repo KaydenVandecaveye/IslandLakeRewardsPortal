@@ -7,30 +7,6 @@ function Dashboard() {
     const [amountSpent, setAmountSpent] = useState(0);
 
 
-    const incPoints = async (userNumber) => {
-        const usersRef = collection(db, "users");
-        const q = query(usersRef, where("userNumber", "==", userNumber));
-
-        try {
-            const querySnapshot = await getDocs(q);
-        
-            if (querySnapshot.empty) {
-              console.log("No matching user found");
-              return;
-            }
-        
-            const userDoc = querySnapshot.docs[0].ref;
-        
-            await updateDoc(userDoc, {
-              points: increment(1),
-            });
-        
-            console.log("Points incremented!");
-          } catch (error) {
-            console.error("Error incrementing points:", error);
-          }
-    }
-
     const handleSubmit = async () => {
         if (amountSpent === 0 || userNum === "") {
             alert("Invalid submission, please fill all fields.");
@@ -48,18 +24,23 @@ function Dashboard() {
     }
     
     return (
-        <div>
-            <h2>Dashboard</h2>
+        <div className="p-4 max-w-md mx-auto">
+            <h2 className="text-center text-2xl font-semibold mb-4">Dashboard</h2>
             <input
+                className="w-full p-2 border border-gray-300 rounded mb-2"
                 placeholder="User Number"
+                value={userNum}
                 onChange={(e) => setUserNum(e.target.value)}
             />
             <input
-                placeholder="Amount spent"
+                className="w-full p-2 border border-gray-300 rounded mb-4"
+                placeholder="Amount Spent"
+                value={amountSpent}
                 onChange={(e) => setAmountSpent(e.target.value)}
             />
             <button
-                onClick={() => handleSubmit()}
+                className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                onClick={handleSubmit}
             >
                 Submit
             </button>
