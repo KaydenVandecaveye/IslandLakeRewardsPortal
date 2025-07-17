@@ -23,7 +23,7 @@ function Points() {
     
     return (
         <div className="p-4 max-w-md mx-auto">
-            <h2 className="text-center text-2xl font-semibold mb-4">Dashboard</h2>
+            <h2 className="text-center text-2xl font-semibold mb-4">Points</h2>
             <input
                 className="w-full p-2 border border-gray-300 rounded mb-2"
                 placeholder="User Number"
