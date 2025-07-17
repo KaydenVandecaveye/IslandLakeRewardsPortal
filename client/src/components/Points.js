@@ -2,24 +2,38 @@ import { useState } from "react";
 
 function Points() {
     const [userNum, setUserNum] = useState("");
-    const [amountSpent, setAmountSpent] = useState(0);
+    const [amountSpent, setAmountSpent] = useState("");
 
 
     const handleSubmit = async () => {
-        if (amountSpent === 0 || userNum === "") {
-            alert("Invalid submission, please fill all fields.");
+        const amount = parseFloat(amountSpent); // convert to number
+      
+        if (!userNum || isNaN(amount) || amount <= 0) {
+          alert("Invalid submission, please fill all fields with valid values.");
+          return; // stop here
         }
-        fetch('http://localhost:3001/user/addPoints', {
+      
+        try {
+          const response = await fetch('http://localhost:3001/user/addPoints', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                userNumber: userNum,
-                moneySpent: amountSpent
-            })
-        })
-    }
+              userNumber: userNum,
+              moneySpent: amount, // send as number
+            }),
+          });
+      
+          if (!response.ok) {
+            alert("Error submitting data");
+          } else {
+            alert("Points added successfully!");
+            setUserNum("");
+            setAmountSpent("");
+          }
+        } catch (error) {
+          alert("Network error: " + error.message);
+        }
+      };
     
     return (
         <div className="p-4 max-w-md mx-auto">

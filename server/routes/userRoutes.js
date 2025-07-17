@@ -37,6 +37,7 @@ router.post('/addPoints', async (req, res) => {
     });
 
     console.log('Points incremented!');
+    res.status(200).json({ message: 'Points added successfully' });
   }
    catch (error) {
       console.error("Error incrementing points:", error);
