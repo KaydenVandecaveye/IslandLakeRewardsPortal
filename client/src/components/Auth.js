@@ -9,7 +9,7 @@ export const Auth = () => {
 
     const navigate = useNavigate();
     const handleNav = () => {
-        navigate('/dashboard');
+        navigate('/main');
     }
  
     const signIn = async () => {
@@ -18,6 +18,9 @@ export const Auth = () => {
 
         if (email === process.env.REACT_APP_ADMIN_UN && password === process.env.REACT_APP_ADMIN_PW) {
             handleNav();
+        }
+        else {
+            alert("Invalid sign in credentials, try again.");
         }
     };
 

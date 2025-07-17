@@ -1,8 +1,6 @@
-import { db } from "../config/firebase";
 import { useState } from "react";
-import { collection, query, where, getDocs, updateDoc, increment } from "firebase/firestore";
 
-function Dashboard() {
+function Points() {
     const [userNum, setUserNum] = useState("");
     const [amountSpent, setAmountSpent] = useState(0);
 
@@ -48,4 +46,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard;
+export default Points;
