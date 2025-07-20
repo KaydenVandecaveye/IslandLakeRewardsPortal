@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
 import Points from '../components/Points';
+import Promotions from '../components/Promotions'; // <-- NEW
 
 function MainPage() {
-  const [activeTab, setActiveTab] = useState('points'); // display Points tab by default
+  const [activeTab, setActiveTab] = useState('points'); // default
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'dashboard':
         return <Dashboard />;
       case 'points':
+        return <Points />;
+      case 'promotions':
+        return <Promotions />;
       default:
         return <Points />;
     }
@@ -60,7 +64,7 @@ function MainPage() {
         </div>
       </div>
 
-      {/* Full-width Tabs */}
+      {/* Tab Buttons */}
       <div style={{ width: '100%', maxWidth: '800px', marginBottom: '2rem' }}>
         <button
           onClick={() => setActiveTab('dashboard')}
@@ -88,10 +92,26 @@ function MainPage() {
             border: 'none',
             borderRadius: '6px',
             fontWeight: 'bold',
+            marginBottom: '1rem',
             cursor: 'pointer'
           }}
         >
           Points
+        </button>
+        <button
+          onClick={() => setActiveTab('promotions')}
+          style={{
+            width: '100%',
+            padding: '1rem',
+            backgroundColor: activeTab === 'promotions' ? '#007bff' : '#e0e0e0',
+            color: activeTab === 'promotions' ? 'white' : 'black',
+            border: 'none',
+            borderRadius: '6px',
+            fontWeight: 'bold',
+            cursor: 'pointer'
+          }}
+        >
+          Promotions
         </button>
       </div>
 
