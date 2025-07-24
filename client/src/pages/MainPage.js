@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Dashboard from '../components/Dashboard';
 import Points from '../components/Points';
-import Promotions from '../components/Promotions'; // <-- NEW
+import Deals from '../components/Deals'; // <-- NEW
 
 function MainPage() {
   const [activeTab, setActiveTab] = useState('points'); // default
@@ -12,8 +12,8 @@ function MainPage() {
         return <Dashboard />;
       case 'points':
         return <Points />;
-      case 'promotions':
-        return <Promotions />;
+      case 'deals':
+        return <Deals />;
       default:
         return <Points />;
     }
@@ -99,20 +99,22 @@ function MainPage() {
           Points
         </button>
         <button
-          onClick={() => setActiveTab('promotions')}
-          style={{
+            onClick={() => setActiveTab('deals')}
+            style={{
             width: '100%',
             padding: '1rem',
-            backgroundColor: activeTab === 'promotions' ? '#007bff' : '#e0e0e0',
-            color: activeTab === 'promotions' ? 'white' : 'black',
+            backgroundColor: activeTab === 'deals' ? '#007bff' : '#e0e0e0',
+            color: activeTab === 'deals' ? 'white' : 'black',
             border: 'none',
             borderRadius: '6px',
             fontWeight: 'bold',
-            cursor: 'pointer'
-          }}
-        >
-          Promotions
-        </button>
+            cursor: 'pointer',
+            marginBottom: '1rem'
+  }}
+>
+  Add Deals
+</button>
+
       </div>
 
       {/* Tab Content */}
