@@ -33,31 +33,34 @@ function Points() {
         } catch (error) {
           alert("Network error: " + error.message);
         }
-      };
+  };
     
-    return (
-        <div className="p-4 max-w-md mx-auto">
-            <h2 className="text-center text-2xl font-semibold mb-4">Points</h2>
-            <input
-                className="w-full p-2 border border-gray-300 rounded mb-2"
-                placeholder="User Number"
-                value={userNum}
-                onChange={(e) => setUserNum(e.target.value)}
-            />
-            <input
-                className="w-full p-2 border border-gray-300 rounded mb-4"
-                placeholder="Amount Spent"
-                value={amountSpent}
-                onChange={(e) => setAmountSpent(e.target.value)}
-            />
-            <button
-                className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-                onClick={handleSubmit}
-            >
-                Submit
-            </button>
-        </div>
-    )
+  return (
+    <div className="bg-white shadow-md rounded-xl p-6 mt-10">
+      <h2 className="text-center text-2xl font-semibold mb-6 text-gray-800 font-sans">Add Points</h2>
+  
+      <input
+        className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg mb-4 text-sm focus:outline-none"
+        placeholder="User Number"
+        value={userNum}
+        onChange={(e) => setUserNum(e.target.value)}
+      />
+  
+      <input
+        className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg mb-6 text-sm focus:outline-none "
+        placeholder="Amount Spent"
+        value={amountSpent}
+        onChange={(e) => setAmountSpent(e.target.value)}
+      />
+  
+      <button
+        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2.5 rounded-lg font-semibold text-sm transition-all"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
+    </div>
+  );
 }
 
 export default Points;

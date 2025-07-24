@@ -52,90 +52,106 @@ export default function Deals() {
     }
   };
 
+  const inputStyle = {
+    padding: '0.75rem',
+    border: '1px solid #dbdbdb',
+    borderRadius: '8px',
+    fontSize: '0.95rem',
+    fontFamily: 'inherit',
+    outline: 'none',
+    backgroundColor: '#fafafa',
+  };
+
   return (
-    <div>
-      <h2 className="text-center text-2xl font-semibold mb-4">Add New Deal</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <label htmlFor="title" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-          Title
-        </label>
+    <div
+      style={{
+        margin: '0 auto',
+        padding: '2rem 1rem',
+        backgroundColor: '#fff',
+        borderRadius: '16px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      }}
+    >
+      <h2
+        style={{
+          textAlign: 'center',
+          fontSize: '1.5rem',
+          fontWeight: '600',
+          marginBottom: '1.5rem',
+          fontFamily: 'sans-serif',
+        }}
+      >
+        Create New Deal
+      </h2>
+  
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
         <input
           type="text"
           id="title"
           name="title"
-          placeholder="Type Here"
+          placeholder="Title"
           value={formData.title}
           onChange={handleChange}
           required
+          style={inputStyle}
         />
-
-        <label htmlFor="description" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-          Description
-        </label>
+  
         <textarea
           id="description"
           name="description"
-          placeholder="Type Here"
+          placeholder="Description"
           value={formData.description}
           onChange={handleChange}
           required
+          rows="3"
+          style={inputStyle}
         />
-
-        <label htmlFor="price" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-          Point Cost (0 = Promo)
-        </label>
+  
         <input
           type="number"
           id="price"
           name="price"
-          placeholder="Type Here"
+          placeholder="Point Cost"
           value={formData.price}
           onChange={handleChange}
           required
+          style={inputStyle}
         />
-
-
-        {/* Deal Duration Label & Dropdown */}
-        <label htmlFor="type" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-          Deal Duration
-        </label>
+  
         <select
           id="type"
           name="type"
           value={formData.type}
           onChange={handleChange}
           required
+          style={inputStyle}
         >
           <option value="permanent">Permanent</option>
           <option value="limited">Limited</option>
         </select>
-
-        {/* Expiration Date Field with Label */}
+  
         {formData.type === 'limited' && (
-          <div>
-            <label htmlFor="expiresAt" style={{ fontSize: '0.9rem', fontWeight: 'bold', marginBottom: '0.25rem', display: 'block' }}>
-              Set Expiration Date
-            </label>
-            <input
-              type="date"
-              id="expiresAt"
-              name="expiresAt"
-              value={formData.expiresAt}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <input
+            type="date"
+            id="expiresAt"
+            name="expiresAt"
+            value={formData.expiresAt}
+            onChange={handleChange}
+            required
+            style={inputStyle}
+          />
         )}
-
+  
         <button
           type="submit"
           style={{
-            padding: '0.75rem',
-            backgroundColor: '#007bff',
+            padding: '0.9rem',
+            backgroundColor: '#3897f0', // Instagram blue
             color: 'white',
             border: 'none',
-            borderRadius: '6px',
-            fontWeight: 'bold',
+            borderRadius: '8px',
+            fontWeight: '600',
+            fontSize: '1rem',
             cursor: 'pointer',
           }}
         >
